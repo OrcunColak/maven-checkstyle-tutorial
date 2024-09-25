@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <checkstyle.version>3.0.0</checkstyle.version>
+        <checkstyle.version>3.5.0</checkstyle.version>
     </properties>
 
     <build>
@@ -29,31 +29,33 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>10.18.1</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
-                        <id>verify-style</id>
-                        <phase>process-classes</phase>
+                        <id>check-style</id>
+                        <phase>validate</phase>
                         <goals>
-                            <goal>checkstyle-aggregate</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
                 <!-- In this configuration, any defined rule violation will break the build -->
                 <configuration>
-                    <encoding>UTF-8</encoding>
+                    <configLocation>${project.basedir}/mp_checkstyle_rules.xml</configLocation>
                     <consoleOutput>true</consoleOutput>
                     <failOnViolation>true</failOnViolation>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <failsOnError>true</failsOnError>
                     <linkXRef>true</linkXRef>
                     <logViolationsToConsole>true</logViolationsToConsole>
-                    <configLocation>${project.basedir}/mp_checkstyle_rules.xml</configLocation>
 
-                    <!-- <checkstyleRules> -->
-                    <!--     <module name="Checker"> -->
-                    <!--         Define your rules here -->
-                    <!--     </module> -->
-                    <!-- </checkstyleRules> -->
                 </configuration>
             </plugin>
         </plugins>

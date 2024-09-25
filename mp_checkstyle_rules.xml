@@ -26,6 +26,11 @@
         <property name="max" value="3500"/>
         <property name="fileExtensions" value="java"/>
     </module>
+    <module name="LineLength">
+        <property name="max" value="120"/> <!-- Set your desired line length -->
+        <property name="ignorePattern" value="^\\s*$"/> <!-- Ignore blank lines -->
+        <!-- <property name="ignorePattern" value="@version|@see"/> -->
+    </module>
     <module name="FileTabCharacter"/>
     <module name="TreeWalker">
         <module name="ConstantName">
@@ -50,10 +55,8 @@
         <module name="IllegalImport"/>
         <module name="RedundantImport"/>
         <module name="UnusedImports"/>
-        <module name="LineLength">
-            <property name="max" value="150"/>
-            <property name="ignorePattern" value="@version|@see"/>
-        </module>
+
+
         <module name="MethodLength">
             <property name="max" value="250"/>
         </module>
