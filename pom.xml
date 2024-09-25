@@ -48,11 +48,11 @@
                 </executions>
                 <!-- In this configuration, any defined rule violation will break the build -->
                 <configuration>
-                    <configLocation>${project.basedir}/mp_checkstyle_rules.xml</configLocation>
+                    <configLocation>${project.basedir}/mp_checkstyle_rules.xml</configLocation> <!-- Reference to the config file -->
                     <consoleOutput>true</consoleOutput>
-                    <failOnViolation>true</failOnViolation>
+                    <failOnViolation>true</failOnViolation> <!-- This should cause the build to fail on violations -->
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <failsOnError>true</failsOnError>
+                    <failsOnError>true</failsOnError>  <!-- The build should fail when there is an error during the Checkstyle execution -->
                     <linkXRef>true</linkXRef>
                     <logViolationsToConsole>true</logViolationsToConsole>
 
